@@ -4,6 +4,8 @@ class Fairy {
     this.dust = 10;
     this.clothes = { dresses: ["Iris"] };
     this.disposition = "Good natured";
+    this.humanWards = [];
+    this.count = 0;
   }
 
   receiveBelief() {
@@ -14,15 +16,25 @@ class Fairy {
     this.dust += 10;
   }
 
-  makeDresses([dress]) {
-    this.clothes.dresses.push(dress);
+  makeDresses(flowers) {
+    this.clothes.dresses.push(...flowers);
   }
 
   becomeProvoked() {
     this.disposition = "Vengeful";
   }
 
-  replaceInfant() {}
+  replaceInfant(infant) {
+    if (this.disposition === "Vengeful") {
+      this.humanWards.push(infant);
+      this.count += 1;
+      if (this.count >= 3) {
+        this.disposition = "Good natured";
+      }
+      return (infant.disposition = "Malicious");
+    }
+    return infant;
+  }
 }
 
 module.exports = Fairy;

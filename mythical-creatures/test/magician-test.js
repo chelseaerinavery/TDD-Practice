@@ -1,82 +1,82 @@
-var assert = require('chai').assert;
-var Magician = require('../exercises/magician');
+var assert = require("chai").assert;
+var Magician = require("../exercises/magician");
 
-describe('Magician', function() {
-// Oh no! It looks like there's no text in the `it` blocks! I guess you'll have to read the tests SUPER carefully to know what the test is expecting!
+describe("Magician", function () {
+  // Oh no! It looks like there's no text in the `it` blocks! I guess you'll have to read the tests SUPER carefully to know what the test is expecting!
 
-it.skip('', function() {
+  it("should be instantiated", function () {
     assert.isFunction(Magician);
     assert.instanceOf(new Magician({}), Magician);
   });
 
-it.skip('', function() {
-    var magician1 = new Magician({ name: 'Scott' });
-    var magician2 = new Magician({ name: 'Casey' });
+  it("should have a Great name", function () {
+    var magician1 = new Magician({ name: "Scott" });
+    var magician2 = new Magician({ name: "Casey" });
 
-    assert.equal(magician1.name, 'The Great Scott');
-    assert.equal(magician2.name, 'The Great Casey');
+    assert.equal(magician1.name, "The Great Scott");
+    assert.equal(magician2.name, "The Great Casey");
   });
 
-it.skip('', function() {
-    var magician1 = new Magician({ name: 'Scott', assistant: true });
-    var magician2 = new Magician({ name: 'Casey', assistant: false });
+  it("should be able to have an assistant", function () {
+    var magician1 = new Magician({ name: "Scott", assistant: true });
+    var magician2 = new Magician({ name: "Casey", assistant: false });
 
-    assert.equal(magician1.name, 'The Great Scott');
+    assert.equal(magician1.name, "The Great Scott");
     assert.equal(magician1.assistant, true);
 
-    assert.equal(magician2.name, 'The Great Casey');
+    assert.equal(magician2.name, "The Great Casey");
     assert.equal(magician2.assistant, false);
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Scott' });
+  it("should have 'top hat' has its default favorite accessory", function () {
+    var magician = new Magician({ name: "Scott" });
 
-    assert.equal(magician.favoriteAccessory, 'top hat');
+    assert.equal(magician.favoriteAccessory, "top hat");
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Casey', clothing: 'cape' });
+  it("should be able to have other favorite accessories", function () {
+    var magician = new Magician({ name: "Casey", clothing: "cape" });
 
-    assert.equal(magician.favoriteAccessory, 'cape')
+    assert.equal(magician.favoriteAccessory, "cape");
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Scott' });
+  it("should be able to perform incantation", function () {
+    var magician = new Magician({ name: "Scott" });
 
-    var spell = magician.performIncantation('abracadabra');
-    var charm = magician.performIncantation('allakazaam')
+    var spell = magician.performIncantation("abracadabra");
+    var charm = magician.performIncantation("allakazaam");
 
-    assert.equal(spell, 'ABRACADABRA!');
-    assert.equal(charm, 'ALLAKAZAAM!');
+    assert.equal(spell, "ABRACADABRA!");
+    assert.equal(charm, "ALLAKAZAAM!");
   });
 
-it.skip('', function() {
-    var magician1 = new Magician({ name: 'Hannah' });
-    var magician2 = new Magician({ name: 'Kayla', clothing: 'top hat' });
+  it("should be able to perform trick with accessory", function () {
+    var magician1 = new Magician({ name: "Hannah" });
+    var magician2 = new Magician({ name: "Kayla", clothing: "top hat" });
 
     var spell1 = magician1.performTrick();
     var spell2 = magician2.performTrick();
 
-    assert.equal(spell1, 'PULL RABBIT FROM TOP HAT');
-    assert.equal(spell2, 'PULL RABBIT FROM TOP HAT');
+    assert.equal(spell1, "PULL RABBIT FROM TOP HAT");
+    assert.equal(spell2, "PULL RABBIT FROM TOP HAT");
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Leta', clothing: 'cape' });
+  it("should be able to perform tricks with other accessories", function () {
+    var magician = new Magician({ name: "Leta", clothing: "cape" });
 
     var spell = magician.performTrick();
 
-    assert.equal(spell, 'PULL DOVE FROM SLEEVE');
+    assert.equal(spell, "PULL DOVE FROM SLEEVE");
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Leta' });
+  it("should start with small confidence", function () {
+    var magician = new Magician({ name: "Leta" });
 
     assert.equal(magician.confidencePercentage, 10);
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Leta' });
+  it("should get more confidence after performing tricks", function () {
+    var magician = new Magician({ name: "Leta" });
 
     magician.performTrick();
     magician.performTrick();
@@ -89,31 +89,49 @@ it.skip('', function() {
     assert.equal(magician.confidencePercentage, 50);
   });
 
-it.skip('', function() {
-    var magician = new Magician({ name: 'Scott', assistant: true });
+  it("should be able to perform show stopper on 10th try", function () {
+    var magician = new Magician({ name: "Scott", assistant: true });
 
-    assert.equal(magician.performShowStopper(), 'Oh no, this trick is not ready!');
+    assert.equal(
+      magician.performShowStopper(),
+      "Oh no, this trick is not ready!"
+    );
 
     for (var i = 0; i < 10; i++) {
       magician.performTrick();
     }
 
-    assert.equal(magician.performShowStopper(), 'WOW! The magician totally just sawed that person in half!');
+    assert.equal(
+      magician.performShowStopper(),
+      "WOW! The magician totally just sawed that person in half!"
+    );
   });
 
-it.skip('', function() {
-    var magician1 = new Magician({ name: 'Scott', assistant: false });
-    var magician2 = new Magician({ name: 'Hannah', assistant: true });
+  it("should not perform a show stopper without an assistant", function () {
+    var magician1 = new Magician({ name: "Scott", assistant: false });
+    var magician2 = new Magician({ name: "Hannah", assistant: true });
 
-    assert.equal(magician1.performShowStopper(), 'Oh no, this trick is not ready!');
-    assert.equal(magician2.performShowStopper(), 'Oh no, this trick is not ready!');
+    assert.equal(
+      magician1.performShowStopper(),
+      "Oh no, this trick is not ready!"
+    );
+    assert.equal(
+      magician2.performShowStopper(),
+      "Oh no, this trick is not ready!"
+    );
 
     for (var i = 0; i < 10; i++) {
       magician1.performTrick();
       magician2.performTrick();
     }
 
-    assert.equal(magician1.performShowStopper(), 'Oh no, this trick is not ready!');
-    assert.equal(magician2.performShowStopper(), 'WOW! The magician totally just sawed that person in half!');
+    assert.equal(
+      magician1.performShowStopper(),
+      "Oh no, this trick is not ready!"
+    );
+    assert.equal(
+      magician2.performShowStopper(),
+      "WOW! The magician totally just sawed that person in half!"
+    );
   });
 });
